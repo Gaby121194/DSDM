@@ -1,0 +1,77 @@
+[comment encoding = UTF-8 /]
+[module generateRelationNotation('http://www.example.org/diagramaClasesCompleto')]
+ 
+[template public generateRelationOneToOne(i : Relacion)]
+[if (i.dependiente)]
+	@OneToOne(cascade= CascadeType.PERSIST)
+[else]
+	@OneToOne(cascade= CascadeType.MERGE)
+[/if]
+	@JoinColumn(name="fk_[i.destino.nombre/]")
+[/template]
+[template public generateRelationOneToMany(i : Relacion)]
+[if (i.dependiente)]
+	@OneToMany(cascade=CascadeType.ALL, orphanRemoval=true)
+[else]
+	@OneToMany(cascade=CascadeType.MERGE, orphanRemoval=true)
+[/if]
+	
+[/template]
+[template public generateRelationManyToOne(i : Relacion)]
+[if (i.dependiente)]
+	@ManyToOne(cascade= CascadeType.PERSIST)
+[else]
+	@ManyToOne(cascade= CascadeType.MERGE)
+[/if]
+	
+	@JoinColumn(name="fk_[i.destino.nombre/]")
+[/template]
+[template public generateRelationManyToMany(i : Relacion)]
+	[if (i.dependiente)]
+	@ManyToMany(cascade= CascadeType.ALL)
+[else]
+	@ManyToMany(cascade= CascadeType.MERGE)
+[/if]
+	
+	@JoinTable(name="[i.origen.nombre/]_[i.destino.nombre/]",
+	joinColumns=@JoinColumn(name="[i.origen.nombre/]"),
+	inverseJoinColumns=@JoinColumn(name="[i.destino.nombre/]"))
+	@Default
+[/template]
+
+
+[template public generateBidirectionalDestinoManyToMany(i : Relacion)]
+	@ManyToMany(mappedBy= "[i.nombre/]")
+	@Default
+[/template]
+[template public generateBidirectionalOrigenManyToMany(i : Relacion)]
+	[if (i.dependiente)]
+		@ManyToMany(cascade= {CascadeType.PERSIST, CascadeType.MERGE})
+	[else]
+		@ManyToMany(cascade= CascadeType.MERGE)
+	[/if]
+	@JoinTable(name="[i.origen.nombre/]_[i.destino.nombre/]",
+	joinColumns=@JoinColumn(name="[i.origen.nombre/]"),
+	inverseJoinColumns=@JoinColumn(name="[i.destino.nombre/]"))
+	@Default
+	@ToString.Exclude
+[/template]
+[template public generateBidirectionalOrigenOneToMany(i : Relacion)]
+	[if (i.dependiente)]
+		@OneToMany(mappedBy= "[i.nombre/]", cascade=CascadeType.ALL, orphanRemoval = True)
+	[else]
+		@OneToMany(mappedBy= "[i.nombre/]", cascade=CascadeType.MERGE, orphanRemoval = True)
+	[/if]
+	@Default
+[/template]
+[template public generateBidirectionalDestinoOneToMany(i : Relacion)]
+	[if (i.dependiente)]
+		@ManyToOne(cascade= CascadeType.PERSIST)
+	[else]
+		@ManyToOne(cascade= CascadeType.MERGE)
+	[/if]
+	@JoinColumn(name="fk_[i.origen.nombre/]")
+[/template]
+[template public generateBidirectionalDestinoOneToOne(i : Relacion)]
+	@OneToOne(mappedBy = "[i.nombre/]")
+[/template]

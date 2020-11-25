@@ -1,0 +1,316 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:properties="http://www.eclipse.org/sirius/properties/1.0.0" xmlns:properties-ext-widgets-reference="http://www.eclipse.org/sirius/properties/1.0.0/ext/widgets/reference" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/description/tool/1.1.0" name="DiagramaCompleto" version="12.0.0.2017041100">
+  <ownedViewpoints name="DiagramaUTN">
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="DiagramaDeClases" domainClass="diagramaClasesCompleto::DiagramaClases" enablePopupBars="true">
+      <defaultLayer name="Principal">
+        <edgeMappings name="Relacion" sourceMapping="//@ownedViewpoints[name='DiagramaUTN']/@ownedRepresentations[name='DiagramaDeClases']/@defaultLayer/@containerMappings[name='Paquete']/@subContainerMappings[name='Clase']" targetMapping="//@ownedViewpoints[name='DiagramaUTN']/@ownedRepresentations[name='DiagramaDeClases']/@defaultLayer/@containerMappings[name='Paquete']/@subContainerMappings[name='Clase'] //@ownedViewpoints[name='DiagramaUTN']/@ownedRepresentations[name='DiagramaDeClases']/@defaultLayer/@containerMappings[name='Paquete']/@subContainerMappings[name='Interface']" targetFinderExpression="[destino/]" sourceFinderExpression="[origen/]" domainClass="diagramaClasesCompleto::Relacion" useDomainElement="true">
+          <conditionnalStyles predicateExpression="[tipo=TipoRelacion::unidireccional/]">
+            <style sizeComputationExpression="2">
+              <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <centerLabelStyleDescription labelSize="12" showIcon="false" labelExpression="[nombre/]">
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              </centerLabelStyleDescription>
+            </style>
+          </conditionnalStyles>
+          <conditionnalStyles predicateExpression="[tipo=TipoRelacion::agregacion/]">
+            <style sourceArrow="Diamond" sizeComputationExpression="2">
+              <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <centerLabelStyleDescription labelSize="12" showIcon="false" labelExpression="[nombre/]">
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              </centerLabelStyleDescription>
+            </style>
+          </conditionnalStyles>
+          <conditionnalStyles predicateExpression="[tipo=TipoRelacion::composicion/]">
+            <style sourceArrow="FillDiamond" sizeComputationExpression="2">
+              <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <centerLabelStyleDescription labelSize="12" showIcon="false" labelExpression="[nombre/]">
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              </centerLabelStyleDescription>
+            </style>
+          </conditionnalStyles>
+        </edgeMappings>
+        <edgeMappings name="Herencia" sourceMapping="//@ownedViewpoints[name='DiagramaUTN']/@ownedRepresentations[name='DiagramaDeClases']/@defaultLayer/@containerMappings[name='Paquete']/@subContainerMappings[name='Clase'] //@ownedViewpoints[name='DiagramaUTN']/@ownedRepresentations[name='DiagramaDeClases']/@defaultLayer/@containerMappings[name='Paquete']/@subContainerMappings[name='Interface']" targetMapping="//@ownedViewpoints[name='DiagramaUTN']/@ownedRepresentations[name='DiagramaDeClases']/@defaultLayer/@containerMappings[name='Paquete']/@subContainerMappings[name='Interface'] //@ownedViewpoints[name='DiagramaUTN']/@ownedRepresentations[name='DiagramaDeClases']/@defaultLayer/@containerMappings[name='Paquete']/@subContainerMappings[name='Clase']" targetFinderExpression="[destino/]" sourceFinderExpression="[origen/]" domainClass="diagramaClasesCompleto::Herencia" useDomainElement="true">
+          <style targetArrow="InputClosedArrow" sizeComputationExpression="2">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <centerLabelStyleDescription labelSize="12">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="Implementacion" sourceMapping="//@ownedViewpoints[name='DiagramaUTN']/@ownedRepresentations[name='DiagramaDeClases']/@defaultLayer/@containerMappings[name='Paquete']/@subContainerMappings[name='Clase']" targetMapping="//@ownedViewpoints[name='DiagramaUTN']/@ownedRepresentations[name='DiagramaDeClases']/@defaultLayer/@containerMappings[name='Paquete']/@subContainerMappings[name='Interface']" targetFinderExpression="[destino/]" sourceFinderExpression="[origen/]" domainClass="diagramaClasesCompleto::Realizacion" useDomainElement="true">
+          <style lineStyle="dash" targetArrow="InputFillClosedArrow" sizeComputationExpression="2">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <centerLabelStyleDescription labelSize="12">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <containerMappings name="Paquete" domainClass="diagramaClasesCompleto::Package">
+          <subContainerMappings name="Clase" semanticCandidatesExpression="feature:eAllContents" domainClass="diagramaClasesCompleto::Clase" childrenPresentation="List">
+            <subNodeMappings name="Atributo" semanticCandidatesExpression="feature:eAllContents" domainClass="diagramaClasesCompleto::Atributo">
+              <conditionnalStyles predicateExpression="[self.visibilidad = ModicadoresAcceso::private/]">
+                <style xsi:type="style:WorkspaceImageDescription" labelSize="12" labelExpression="[nombre + ': '+ tipo/]" iconPath="/DiagramaCompleto.design/src/iconos/AtributoPrivate.GIF" labelAlignment="LEFT" sizeComputationExpression="-1" labelPosition="node" resizeKind="NSEW">
+                  <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                  <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                </style>
+              </conditionnalStyles>
+              <conditionnalStyles predicateExpression="[self.visibilidad = ModicadoresAcceso::protected/]">
+                <style xsi:type="style:WorkspaceImageDescription" labelSize="12" labelExpression="[nombre + ': '+ tipo/]" iconPath="/DiagramaCompleto.design/src/iconos/AtributoProtected.GIF" labelAlignment="LEFT" sizeComputationExpression="-1" labelPosition="node" resizeKind="NSEW">
+                  <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                  <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                </style>
+              </conditionnalStyles>
+              <conditionnalStyles predicateExpression="[self.visibilidad = ModicadoresAcceso::public/]">
+                <style xsi:type="style:WorkspaceImageDescription" labelSize="12" labelExpression="[nombre + ': '+ tipo/]" iconPath="/DiagramaCompleto.design/src/iconos/AtributoPublic.GIF" labelAlignment="LEFT" sizeComputationExpression="-1" labelPosition="node" resizeKind="NSEW">
+                  <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                  <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                </style>
+              </conditionnalStyles>
+            </subNodeMappings>
+            <subNodeMappings name="Operacion" semanticCandidatesExpression="feature:eAllContents" doubleClickDescription="//@ownedViewpoints[name='DiagramaUTN']/@ownedRepresentations[name='DiagramaDeClases']/@defaultLayer/@toolSections.0/@ownedTools[name='ParametrosMetodo']" domainClass="diagramaClasesCompleto::Operacion">
+              <conditionnalStyles predicateExpression="[self.visibilidad = ModicadoresAcceso::protected/]">
+                <style xsi:type="style:WorkspaceImageDescription" labelSize="12" labelExpression="[nombre+ '(): ' + tipoRetorno/]" iconPath="/DiagramaCompleto.design/src/iconos/OperacionProtected.GIF" labelAlignment="LEFT" sizeComputationExpression="-1" labelPosition="node" resizeKind="NSEW">
+                  <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                  <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                </style>
+              </conditionnalStyles>
+              <conditionnalStyles predicateExpression="[self.visibilidad = ModicadoresAcceso::public/]">
+                <style xsi:type="style:WorkspaceImageDescription" labelSize="12" labelExpression="[nombre+ '(): ' + tipoRetorno/]" iconPath="/DiagramaCompleto.design/src/iconos/OperacionPublic.GIF" labelAlignment="LEFT" sizeComputationExpression="-1" labelPosition="node" resizeKind="NSEW">
+                  <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                  <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                </style>
+              </conditionnalStyles>
+            </subNodeMappings>
+            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelSize="12" showIcon="false" labelExpression="[nombre/]" widthComputationExpression="20" heightComputationExpression="20">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_blue']"/>
+              <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_blue']"/>
+            </style>
+            <conditionnalStyles predicateExpression="[self.esAbstracta=true/]">
+              <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelSize="12" showIcon="false" labelExpression="['&lt;&lt;abstract>>\n'+nombre/]" widthComputationExpression="20" heightComputationExpression="20">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <labelFormat>italic</labelFormat>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='red']"/>
+                <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_red']"/>
+              </style>
+            </conditionnalStyles>
+          </subContainerMappings>
+          <subContainerMappings name="Interface" semanticCandidatesExpression="feature:eAllContents" domainClass="diagramaClasesCompleto::Interface" reusedNodeMappings="//@ownedViewpoints[name='DiagramaUTN']/@ownedRepresentations[name='DiagramaDeClases']/@defaultLayer/@containerMappings[name='Paquete']/@subContainerMappings[name='Clase']/@subNodeMappings[name='Atributo'] //@ownedViewpoints[name='DiagramaUTN']/@ownedRepresentations[name='DiagramaDeClases']/@defaultLayer/@containerMappings[name='Paquete']/@subContainerMappings[name='Clase']/@subNodeMappings[name='Operacion']" childrenPresentation="List">
+            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelSize="12" showIcon="false" labelExpression="['&lt;&lt;I>>\n'+nombre/]" widthComputationExpression="20" heightComputationExpression="20">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_green']"/>
+              <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_green']"/>
+            </style>
+          </subContainerMappings>
+          <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelSize="12" showIcon="false" labelExpression="[nombre/]" widthComputationExpression="70" heightComputationExpression="60">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelFormat>bold</labelFormat>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_purple']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_purple']"/>
+          </style>
+        </containerMappings>
+        <toolSections name="Elementos">
+          <ownedTools xsi:type="tool:ContainerCreationDescription" name="Paquete" containerMappings="//@ownedViewpoints[name='DiagramaUTN']/@ownedRepresentations[name='DiagramaDeClases']/@defaultLayer/@containerMappings[name='Paquete']" iconPath="/DiagramaCompleto.design/src/iconos/Paquete.gif">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="diagramaClasesCompleto::Package" referenceName="packages_contenidos">
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="nombre" valueExpression="['Paquete' + Package.allInstances()->size()/]"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ContainerCreationDescription" name="Clase" containerMappings="//@ownedViewpoints[name='DiagramaUTN']/@ownedRepresentations[name='DiagramaDeClases']/@defaultLayer/@containerMappings[name='Paquete']/@subContainerMappings[name='Clase']" iconPath="/DiagramaCompleto.design/src/iconos/Clase.gif">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="diagramaClasesCompleto::Clase" referenceName="clasificadores_contenidos">
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="nombre" valueExpression="['Clase' + Clase.allInstances()->size()/]"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="Atributo" nodeMappings="//@ownedViewpoints[name='DiagramaUTN']/@ownedRepresentations[name='DiagramaDeClases']/@defaultLayer/@containerMappings[name='Paquete']/@subContainerMappings[name='Clase']/@subNodeMappings[name='Atributo']" iconPath="/DiagramaCompleto.design/src/iconos/Atributo.gif">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="diagramaClasesCompleto::Atributo" referenceName="atributos_contenidos">
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="nombre" valueExpression="['Atributo' + Atributo.allInstances()->size()/]"/>
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="visibilidad" valueExpression="[ModicadoresAcceso::private/]"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="Operacion" nodeMappings="//@ownedViewpoints[name='DiagramaUTN']/@ownedRepresentations[name='DiagramaDeClases']/@defaultLayer/@containerMappings[name='Paquete']/@subContainerMappings[name='Clase']/@subNodeMappings[name='Operacion']" iconPath="/DiagramaCompleto.design/bin/iconos/Operacion.gif">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="diagramaClasesCompleto::Operacion" referenceName="operaciones_contenidas">
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="nombre" valueExpression="['operacion' + Operacion.allInstances()->size()/]"/>
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="visibilidad" valueExpression="public"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ContainerCreationDescription" name="ClaseAbstracta" containerMappings="//@ownedViewpoints[name='DiagramaUTN']/@ownedRepresentations[name='DiagramaDeClases']/@defaultLayer/@containerMappings[name='Paquete']/@subContainerMappings[name='Clase']" iconPath="/DiagramaCompleto.design/iconos/ClaseAbstracta.gif">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="diagramaClasesCompleto::Clase" referenceName="clasificadores_contenidos">
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="nombre" valueExpression="['Clase' + Clase.allInstances()->size()/]"/>
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="esAbstracta" valueExpression="true"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ContainerCreationDescription" name="Interface" containerMappings="//@ownedViewpoints[name='DiagramaUTN']/@ownedRepresentations[name='DiagramaDeClases']/@defaultLayer/@containerMappings[name='Paquete']/@subContainerMappings[name='Interface']" iconPath="/DiagramaCompleto.design/iconos/Interface.gif">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="diagramaClasesCompleto::Interface" referenceName="clasificadores_contenidos">
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="nombre" valueExpression="['Interface'+Interface.allInstances()->size()/]"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:DoubleClickDescription" name="ParametrosMetodo" mappings="//@ownedViewpoints[name='DiagramaUTN']/@ownedRepresentations[name='DiagramaDeClases']/@defaultLayer/@containerMappings[name='Paquete']/@subContainerMappings[name='Clase']/@subNodeMappings[name='Operacion']">
+            <element name="element"/>
+            <elementView name="elementView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="properties:DialogModelOperation" titleExpression="Parametros">
+                <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
+                  <initialOperation/>
+                </buttons>
+                <buttons labelExpression="OK" default="true" closeDialogOnClick="true">
+                  <initialOperation/>
+                </buttons>
+                <page name="Pagina Parametros" domainClass="diagramaClasesCompleto::Operacion" semanticCandidateExpression="var:self" groups="//@ownedViewpoints[name='DiagramaUTN']/@ownedRepresentations[name='DiagramaDeClases']/@defaultLayer/@toolSections.0/@ownedTools[name='ParametrosMetodo']/@initialOperation/@firstModelOperations/@groups.0"/>
+                <groups name="Listado Parametros" labelExpression="Lista de Parametros" domainClass="diagramaClasesCompleto::Operacion" semanticCandidateExpression="var:self">
+                  <controls xsi:type="properties-ext-widgets-reference:ExtReferenceDescription" name="ColeccionParametros" labelExpression="Parametros" referenceNameExpression="parametros_contenidos">
+                    <onClickOperation>
+                      <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:selection->at(1)">
+                        <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:onClickEventKind='DOUBLE_CLICK'">
+                          <subModelOperations xsi:type="properties:DialogModelOperation" titleExpression="DefineParametro">
+                            <buttons labelExpression="Cancel" closeDialogOnClick="true" rollbackChangesOnClose="true">
+                              <initialOperation/>
+                            </buttons>
+                            <buttons labelExpression="OK" default="true" closeDialogOnClick="true">
+                              <initialOperation/>
+                            </buttons>
+                            <page name="VentanaParametro" labelExpression="HaciaParametros" domainClass="diagramaClasesCompleto::Atributo" semanticCandidateExpression="var:self" groups="//@ownedViewpoints[name='DiagramaUTN']/@ownedRepresentations[name='DiagramaDeClases']/@defaultLayer/@toolSections.0/@ownedTools[name='ParametrosMetodo']/@initialOperation/@firstModelOperations/@groups.0/@controls.0/@onClickOperation/@firstModelOperations/@subModelOperations.0/@subModelOperations.0/@groups.0"/>
+                            <groups name="AtributosParametro" labelExpression="AtributosParametro" domainClass="diagramaClasesCompleto::Atributo" semanticCandidateExpression="var:self">
+                              <controls xsi:type="properties:TextDescription" name="Nombre Parametro" labelExpression="Nombre" valueExpression="var:self.nombre">
+                                <initialOperation>
+                                  <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:self">
+                                    <subModelOperations xsi:type="tool_1:SetValue" featureName="nombre" valueExpression="var:newValue"/>
+                                  </firstModelOperations>
+                                </initialOperation>
+                              </controls>
+                              <controls xsi:type="properties:SelectDescription" name="TipoParametro" labelExpression="Tipo" valueExpression="aql:diagramaClasesCompleto::TipoDato.getEEnumLiteral(self.tipo.toString())" candidatesExpression="aql:diagramaClasesCompleto::TipoDato.eLiteral" candidateDisplayExpression="aql:candidate.name">
+                                <initialOperation>
+                                  <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:self"/>
+                                </initialOperation>
+                              </controls>
+                            </groups>
+                          </subModelOperations>
+                        </subModelOperations>
+                      </firstModelOperations>
+                    </onClickOperation>
+                  </controls>
+                </groups>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+        </toolSections>
+        <toolSections name="Relaciones">
+          <ownedTools xsi:type="tool:EdgeCreationDescription" name="Unidireccional" edgeMappings="//@ownedViewpoints[name='DiagramaUTN']/@ownedRepresentations[name='DiagramaDeClases']/@defaultLayer/@edgeMappings[name='Relacion']" iconPath="/DiagramaCompleto.design/iconos/UniDireccional.gif">
+            <sourceVariable name="source"/>
+            <targetVariable name="target"/>
+            <sourceViewVariable name="sourceView"/>
+            <targetViewVariable name="targetView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[source/]">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="diagramaClasesCompleto::Relacion" referenceName="relaciones_contenidas">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="tipo" valueExpression="[TipoRelacion::unidireccional/]"/>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="origen" valueExpression="[source/]"/>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="destino" valueExpression="[target/]"/>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="nombre" valueExpression="['hacia'+destino.nombre/]"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:EdgeCreationDescription" name="Agregacion" edgeMappings="//@ownedViewpoints[name='DiagramaUTN']/@ownedRepresentations[name='DiagramaDeClases']/@defaultLayer/@edgeMappings[name='Relacion']" iconPath="/DiagramaCompleto.design/iconos/Agregacion.gif">
+            <sourceVariable name="source"/>
+            <targetVariable name="target"/>
+            <sourceViewVariable name="sourceView"/>
+            <targetViewVariable name="targetView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[source/]">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="diagramaClasesCompleto::Relacion" referenceName="relaciones_contenidas">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="tipo" valueExpression="[TipoRelacion::agregacion/]"/>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="origen" valueExpression="[source/]"/>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="destino" valueExpression="[target/]"/>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="nombre" valueExpression="['hacia'+destino.nombre/]"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:EdgeCreationDescription" name="Composicion" edgeMappings="//@ownedViewpoints[name='DiagramaUTN']/@ownedRepresentations[name='DiagramaDeClases']/@defaultLayer/@edgeMappings[name='Relacion']" iconPath="/DiagramaCompleto.design/iconos/Composicion.gif">
+            <sourceVariable name="source"/>
+            <targetVariable name="target"/>
+            <sourceViewVariable name="sourceView"/>
+            <targetViewVariable name="targetView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[source/]">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="diagramaClasesCompleto::Relacion" referenceName="relaciones_contenidas">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="tipo" valueExpression="[TipoRelacion::composicion/]"/>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="origen" valueExpression="[source/]"/>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="destino" valueExpression="[target/]"/>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="nombre" valueExpression="['hacia'+destino.nombre/]"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:EdgeCreationDescription" name="Herencia" edgeMappings="//@ownedViewpoints[name='DiagramaUTN']/@ownedRepresentations[name='DiagramaDeClases']/@defaultLayer/@edgeMappings[name='Herencia']" iconPath="/DiagramaCompleto.design/iconos/Herencia.gif">
+            <sourceVariable name="source"/>
+            <targetVariable name="target"/>
+            <sourceViewVariable name="sourceView"/>
+            <targetViewVariable name="targetView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[source/]">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="diagramaClasesCompleto::Herencia" referenceName="herencias_contenidas">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="origen" valueExpression="[source/]"/>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="destino" valueExpression="[target/]"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:EdgeCreationDescription" name="Realizacion" edgeMappings="//@ownedViewpoints[name='DiagramaUTN']/@ownedRepresentations[name='DiagramaDeClases']/@defaultLayer/@edgeMappings[name='Implementacion']" iconPath="/DiagramaCompleto.design/iconos/Implementacion.gif">
+            <sourceVariable name="source"/>
+            <targetVariable name="target"/>
+            <sourceViewVariable name="sourceView"/>
+            <targetViewVariable name="targetView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[source/]">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="diagramaClasesCompleto::Realizacion" referenceName="realizaciones_contenidas">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="origen" valueExpression="[source/]"/>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="destino" valueExpression="[target/]"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+        </toolSections>
+        <customization>
+          <vsmElementCustomizations xsi:type="description:VSMElementCustomization" predicateExpression="feature:esStatic">
+            <featureCustomizations xsi:type="description:EAttributeCustomization" appliedOn="//@ownedViewpoints[name='DiagramaUTN']/@ownedRepresentations[name='DiagramaDeClases']/@defaultLayer/@containerMappings[name='Paquete']/@subContainerMappings[name='Clase']/@subNodeMappings[name='Atributo']/@conditionnalStyles.0/@style //@ownedViewpoints[name='DiagramaUTN']/@ownedRepresentations[name='DiagramaDeClases']/@defaultLayer/@containerMappings[name='Paquete']/@subContainerMappings[name='Clase']/@subNodeMappings[name='Atributo']/@conditionnalStyles.1/@style //@ownedViewpoints[name='DiagramaUTN']/@ownedRepresentations[name='DiagramaDeClases']/@defaultLayer/@containerMappings[name='Paquete']/@subContainerMappings[name='Clase']/@subNodeMappings[name='Atributo']/@conditionnalStyles.2/@style //@ownedViewpoints[name='DiagramaUTN']/@ownedRepresentations[name='DiagramaDeClases']/@defaultLayer/@containerMappings[name='Paquete']/@subContainerMappings[name='Clase']/@subNodeMappings[name='Operacion']/@conditionnalStyles.0/@style //@ownedViewpoints[name='DiagramaUTN']/@ownedRepresentations[name='DiagramaDeClases']/@defaultLayer/@containerMappings[name='Paquete']/@subContainerMappings[name='Clase']/@subNodeMappings[name='Operacion']/@conditionnalStyles.1/@style" attributeName="labelFormat" value="[FontFormat::underline/]"/>
+          </vsmElementCustomizations>
+          <vsmElementCustomizations xsi:type="description:VSMElementCustomization" predicateExpression="feature:esFinal">
+            <featureCustomizations xsi:type="description:EAttributeCustomization" appliedOn="//@ownedViewpoints[name='DiagramaUTN']/@ownedRepresentations[name='DiagramaDeClases']/@defaultLayer/@containerMappings[name='Paquete']/@subContainerMappings[name='Clase']/@subNodeMappings[name='Atributo']/@conditionnalStyles.0/@style //@ownedViewpoints[name='DiagramaUTN']/@ownedRepresentations[name='DiagramaDeClases']/@defaultLayer/@containerMappings[name='Paquete']/@subContainerMappings[name='Clase']/@subNodeMappings[name='Atributo']/@conditionnalStyles.1/@style //@ownedViewpoints[name='DiagramaUTN']/@ownedRepresentations[name='DiagramaDeClases']/@defaultLayer/@containerMappings[name='Paquete']/@subContainerMappings[name='Clase']/@subNodeMappings[name='Atributo']/@conditionnalStyles.2/@style" attributeName="labelExpression" value="['final '+nombre+': '+tipo/]"/>
+          </vsmElementCustomizations>
+          <vsmElementCustomizations xsi:type="description:VSMElementCustomization" predicateExpression="feature:esAbstracta">
+            <featureCustomizations xsi:type="description:EAttributeCustomization" appliedOn="//@ownedViewpoints[name='DiagramaUTN']/@ownedRepresentations[name='DiagramaDeClases']/@defaultLayer/@containerMappings[name='Paquete']/@subContainerMappings[name='Clase']/@subNodeMappings[name='Operacion']/@conditionnalStyles.0/@style //@ownedViewpoints[name='DiagramaUTN']/@ownedRepresentations[name='DiagramaDeClases']/@defaultLayer/@containerMappings[name='Paquete']/@subContainerMappings[name='Clase']/@subNodeMappings[name='Operacion']/@conditionnalStyles.1/@style" attributeName="labelFormat" value="[FontFormat::italic/]"/>
+          </vsmElementCustomizations>
+        </customization>
+      </defaultLayer>
+    </ownedRepresentations>
+    <ownedJavaExtensions qualifiedClassName="DiagramaCompleto.Services"/>
+  </ownedViewpoints>
+</description:Group>

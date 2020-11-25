@@ -1,0 +1,1258 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:mtl="http://www.eclipse.org/acceleo/mtl/3.0" xmlns:ocl.ecore="http://www.eclipse.org/ocl/1.1.0/Ecore">
+  <mtl:Module name="generateRelationNotation" nsURI="AcceleoJavaSpring::Relation::generateRelationNotation" startHeaderPosition="29" endHeaderPosition="324">
+    <input>
+      <takesTypesFrom href="http://www.example.org/diagramaClasesCompleto#/"/>
+    </input>
+    <ownedModuleElement xsi:type="mtl:Template" name="generateRelationOneToOne" visibility="Public">
+      <body xsi:type="mtl:IfBlock">
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#x9;@OneToOne(cascade= CascadeType.PERSIST)&#xA;"/>
+        <ifExpr xsi:type="ocl.ecore:PropertyCallExp">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Boolean"/>
+          <source xsi:type="ocl.ecore:VariableExp" name="i" referredVariable="/0/generateRelationOneToOne/i">
+            <eType xsi:type="ecore:EClass" href="http://www.example.org/diagramaClasesCompleto#//Relacion"/>
+          </source>
+          <referredProperty xsi:type="ecore:EAttribute" href="http://www.example.org/diagramaClasesCompleto#//Relacion/dependiente"/>
+        </ifExpr>
+        <else>
+          <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#x9;@OneToOne(cascade= CascadeType.MERGE)&#xA;"/>
+        </else>
+      </body>
+      <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#x9;@JoinColumn(name=&quot;fk_"/>
+      <body xsi:type="ocl.ecore:PropertyCallExp">
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <source xsi:type="ocl.ecore:PropertyCallExp">
+          <eType xsi:type="ecore:EClass" href="http://www.example.org/diagramaClasesCompleto#//Clasificador"/>
+          <source xsi:type="ocl.ecore:VariableExp" name="i" referredVariable="/0/generateRelationOneToOne/i">
+            <eType xsi:type="ecore:EClass" href="http://www.example.org/diagramaClasesCompleto#//Relacion"/>
+          </source>
+          <referredProperty xsi:type="ecore:EReference" href="http://www.example.org/diagramaClasesCompleto#//Relacion/destino"/>
+        </source>
+        <referredProperty xsi:type="ecore:EAttribute" href="http://www.example.org/diagramaClasesCompleto#//Clasificador/nombre"/>
+      </body>
+      <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&quot;)"/>
+      <parameter name="i">
+        <eType xsi:type="ecore:EClass" href="http://www.example.org/diagramaClasesCompleto#//Relacion"/>
+      </parameter>
+    </ownedModuleElement>
+    <ownedModuleElement xsi:type="mtl:Template" name="generateRelationOneToMany" visibility="Public">
+      <body xsi:type="mtl:IfBlock">
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#x9;@OneToMany(cascade=CascadeType.ALL, orphanRemoval=true)&#xA;"/>
+        <ifExpr xsi:type="ocl.ecore:PropertyCallExp">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Boolean"/>
+          <source xsi:type="ocl.ecore:VariableExp" name="i" referredVariable="/0/generateRelationOneToMany/i">
+            <eType xsi:type="ecore:EClass" href="http://www.example.org/diagramaClasesCompleto#//Relacion"/>
+          </source>
+          <referredProperty xsi:type="ecore:EAttribute" href="http://www.example.org/diagramaClasesCompleto#//Relacion/dependiente"/>
+        </ifExpr>
+        <else>
+          <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#x9;@OneToMany(cascade=CascadeType.MERGE, orphanRemoval=true)&#xA;"/>
+        </else>
+      </body>
+      <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#x9;"/>
+      <parameter name="i">
+        <eType xsi:type="ecore:EClass" href="http://www.example.org/diagramaClasesCompleto#//Relacion"/>
+      </parameter>
+    </ownedModuleElement>
+    <ownedModuleElement xsi:type="mtl:Template" name="generateRelationManyToOne" visibility="Public">
+      <body xsi:type="mtl:IfBlock">
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#x9;@ManyToOne(cascade= CascadeType.PERSIST)&#xA;"/>
+        <ifExpr xsi:type="ocl.ecore:PropertyCallExp">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Boolean"/>
+          <source xsi:type="ocl.ecore:VariableExp" name="i" referredVariable="/0/generateRelationManyToOne/i">
+            <eType xsi:type="ecore:EClass" href="http://www.example.org/diagramaClasesCompleto#//Relacion"/>
+          </source>
+          <referredProperty xsi:type="ecore:EAttribute" href="http://www.example.org/diagramaClasesCompleto#//Relacion/dependiente"/>
+        </ifExpr>
+        <else>
+          <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#x9;@ManyToOne(cascade= CascadeType.MERGE)&#xA;"/>
+        </else>
+      </body>
+      <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#x9;&#xA;&#x9;@JoinColumn(name=&quot;fk_"/>
+      <body xsi:type="ocl.ecore:PropertyCallExp">
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <source xsi:type="ocl.ecore:PropertyCallExp">
+          <eType xsi:type="ecore:EClass" href="http://www.example.org/diagramaClasesCompleto#//Clasificador"/>
+          <source xsi:type="ocl.ecore:VariableExp" name="i" referredVariable="/0/generateRelationManyToOne/i">
+            <eType xsi:type="ecore:EClass" href="http://www.example.org/diagramaClasesCompleto#//Relacion"/>
+          </source>
+          <referredProperty xsi:type="ecore:EReference" href="http://www.example.org/diagramaClasesCompleto#//Relacion/destino"/>
+        </source>
+        <referredProperty xsi:type="ecore:EAttribute" href="http://www.example.org/diagramaClasesCompleto#//Clasificador/nombre"/>
+      </body>
+      <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&quot;)"/>
+      <parameter name="i">
+        <eType xsi:type="ecore:EClass" href="http://www.example.org/diagramaClasesCompleto#//Relacion"/>
+      </parameter>
+    </ownedModuleElement>
+    <ownedModuleElement xsi:type="mtl:Template" name="generateRelationManyToMany" visibility="Public">
+      <body xsi:type="mtl:IfBlock">
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#x9;@ManyToMany(cascade= CascadeType.ALL)&#xA;"/>
+        <ifExpr xsi:type="ocl.ecore:PropertyCallExp">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Boolean"/>
+          <source xsi:type="ocl.ecore:VariableExp" name="i" referredVariable="/0/generateRelationManyToMany/i">
+            <eType xsi:type="ecore:EClass" href="http://www.example.org/diagramaClasesCompleto#//Relacion"/>
+          </source>
+          <referredProperty xsi:type="ecore:EAttribute" href="http://www.example.org/diagramaClasesCompleto#//Relacion/dependiente"/>
+        </ifExpr>
+        <else>
+          <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#x9;@ManyToMany(cascade= CascadeType.MERGE)&#xA;"/>
+        </else>
+      </body>
+      <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#x9;&#xA;&#x9;@JoinTable(name=&quot;"/>
+      <body xsi:type="ocl.ecore:PropertyCallExp">
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <source xsi:type="ocl.ecore:PropertyCallExp">
+          <eType xsi:type="ecore:EClass" href="http://www.example.org/diagramaClasesCompleto#//Clase"/>
+          <source xsi:type="ocl.ecore:VariableExp" name="i" referredVariable="/0/generateRelationManyToMany/i">
+            <eType xsi:type="ecore:EClass" href="http://www.example.org/diagramaClasesCompleto#//Relacion"/>
+          </source>
+          <referredProperty xsi:type="ecore:EReference" href="http://www.example.org/diagramaClasesCompleto#//Relacion/origen"/>
+        </source>
+        <referredProperty xsi:type="ecore:EAttribute" href="http://www.example.org/diagramaClasesCompleto#//Clasificador/nombre"/>
+      </body>
+      <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="_"/>
+      <body xsi:type="ocl.ecore:PropertyCallExp">
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <source xsi:type="ocl.ecore:PropertyCallExp">
+          <eType xsi:type="ecore:EClass" href="http://www.example.org/diagramaClasesCompleto#//Clasificador"/>
+          <source xsi:type="ocl.ecore:VariableExp" name="i" referredVariable="/0/generateRelationManyToMany/i">
+            <eType xsi:type="ecore:EClass" href="http://www.example.org/diagramaClasesCompleto#//Relacion"/>
+          </source>
+          <referredProperty xsi:type="ecore:EReference" href="http://www.example.org/diagramaClasesCompleto#//Relacion/destino"/>
+        </source>
+        <referredProperty xsi:type="ecore:EAttribute" href="http://www.example.org/diagramaClasesCompleto#//Clasificador/nombre"/>
+      </body>
+      <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&quot;,&#xA;&#x9;joinColumns=@JoinColumn(name=&quot;"/>
+      <body xsi:type="ocl.ecore:PropertyCallExp">
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <source xsi:type="ocl.ecore:PropertyCallExp">
+          <eType xsi:type="ecore:EClass" href="http://www.example.org/diagramaClasesCompleto#//Clase"/>
+          <source xsi:type="ocl.ecore:VariableExp" name="i" referredVariable="/0/generateRelationManyToMany/i">
+            <eType xsi:type="ecore:EClass" href="http://www.example.org/diagramaClasesCompleto#//Relacion"/>
+          </source>
+          <referredProperty xsi:type="ecore:EReference" href="http://www.example.org/diagramaClasesCompleto#//Relacion/origen"/>
+        </source>
+        <referredProperty xsi:type="ecore:EAttribute" href="http://www.example.org/diagramaClasesCompleto#//Clasificador/nombre"/>
+      </body>
+      <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&quot;),&#xA;&#x9;inverseJoinColumns=@JoinColumn(name=&quot;"/>
+      <body xsi:type="ocl.ecore:PropertyCallExp">
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <source xsi:type="ocl.ecore:PropertyCallExp">
+          <eType xsi:type="ecore:EClass" href="http://www.example.org/diagramaClasesCompleto#//Clasificador"/>
+          <source xsi:type="ocl.ecore:VariableExp" name="i" referredVariable="/0/generateRelationManyToMany/i">
+            <eType xsi:type="ecore:EClass" href="http://www.example.org/diagramaClasesCompleto#//Relacion"/>
+          </source>
+          <referredProperty xsi:type="ecore:EReference" href="http://www.example.org/diagramaClasesCompleto#//Relacion/destino"/>
+        </source>
+        <referredProperty xsi:type="ecore:EAttribute" href="http://www.example.org/diagramaClasesCompleto#//Clasificador/nombre"/>
+      </body>
+      <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&quot;))&#xA;&#x9;@Default"/>
+      <parameter name="i">
+        <eType xsi:type="ecore:EClass" href="http://www.example.org/diagramaClasesCompleto#//Relacion"/>
+      </parameter>
+    </ownedModuleElement>
+    <ownedModuleElement xsi:type="mtl:Template" name="generateBidirectionalDestinoManyToMany" visibility="Public">
+      <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#x9;@ManyToMany(mappedBy= &quot;"/>
+      <body xsi:type="ocl.ecore:PropertyCallExp">
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <source xsi:type="ocl.ecore:VariableExp" name="i" referredVariable="/0/generateBidirectionalDestinoManyToMany/i">
+          <eType xsi:type="ecore:EClass" href="http://www.example.org/diagramaClasesCompleto#//Relacion"/>
+        </source>
+        <referredProperty xsi:type="ecore:EAttribute" href="http://www.example.org/diagramaClasesCompleto#//Relacion/nombre"/>
+      </body>
+      <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&quot;)&#xA;&#x9;@Default"/>
+      <parameter name="i">
+        <eType xsi:type="ecore:EClass" href="http://www.example.org/diagramaClasesCompleto#//Relacion"/>
+      </parameter>
+    </ownedModuleElement>
+    <ownedModuleElement xsi:type="mtl:Template" name="generateBidirectionalOrigenManyToMany" visibility="Public">
+      <body xsi:type="mtl:IfBlock">
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#x9;&#x9;@ManyToMany(cascade= {CascadeType.PERSIST, CascadeType.MERGE})&#xA;"/>
+        <ifExpr xsi:type="ocl.ecore:PropertyCallExp">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Boolean"/>
+          <source xsi:type="ocl.ecore:VariableExp" name="i" referredVariable="/0/generateBidirectionalOrigenManyToMany/i">
+            <eType xsi:type="ecore:EClass" href="http://www.example.org/diagramaClasesCompleto#//Relacion"/>
+          </source>
+          <referredProperty xsi:type="ecore:EAttribute" href="http://www.example.org/diagramaClasesCompleto#//Relacion/dependiente"/>
+        </ifExpr>
+        <else>
+          <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#x9;&#x9;@ManyToMany(cascade= CascadeType.MERGE)&#xA;"/>
+        </else>
+      </body>
+      <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#x9;@JoinTable(name=&quot;"/>
+      <body xsi:type="ocl.ecore:PropertyCallExp">
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <source xsi:type="ocl.ecore:PropertyCallExp">
+          <eType xsi:type="ecore:EClass" href="http://www.example.org/diagramaClasesCompleto#//Clase"/>
+          <source xsi:type="ocl.ecore:VariableExp" name="i" referredVariable="/0/generateBidirectionalOrigenManyToMany/i">
+            <eType xsi:type="ecore:EClass" href="http://www.example.org/diagramaClasesCompleto#//Relacion"/>
+          </source>
+          <referredProperty xsi:type="ecore:EReference" href="http://www.example.org/diagramaClasesCompleto#//Relacion/origen"/>
+        </source>
+        <referredProperty xsi:type="ecore:EAttribute" href="http://www.example.org/diagramaClasesCompleto#//Clasificador/nombre"/>
+      </body>
+      <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="_"/>
+      <body xsi:type="ocl.ecore:PropertyCallExp">
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <source xsi:type="ocl.ecore:PropertyCallExp">
+          <eType xsi:type="ecore:EClass" href="http://www.example.org/diagramaClasesCompleto#//Clasificador"/>
+          <source xsi:type="ocl.ecore:VariableExp" name="i" referredVariable="/0/generateBidirectionalOrigenManyToMany/i">
+            <eType xsi:type="ecore:EClass" href="http://www.example.org/diagramaClasesCompleto#//Relacion"/>
+          </source>
+          <referredProperty xsi:type="ecore:EReference" href="http://www.example.org/diagramaClasesCompleto#//Relacion/destino"/>
+        </source>
+        <referredProperty xsi:type="ecore:EAttribute" href="http://www.example.org/diagramaClasesCompleto#//Clasificador/nombre"/>
+      </body>
+      <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&quot;,&#xA;&#x9;joinColumns=@JoinColumn(name=&quot;"/>
+      <body xsi:type="ocl.ecore:PropertyCallExp">
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <source xsi:type="ocl.ecore:PropertyCallExp">
+          <eType xsi:type="ecore:EClass" href="http://www.example.org/diagramaClasesCompleto#//Clase"/>
+          <source xsi:type="ocl.ecore:VariableExp" name="i" referredVariable="/0/generateBidirectionalOrigenManyToMany/i">
+            <eType xsi:type="ecore:EClass" href="http://www.example.org/diagramaClasesCompleto#//Relacion"/>
+          </source>
+          <referredProperty xsi:type="ecore:EReference" href="http://www.example.org/diagramaClasesCompleto#//Relacion/origen"/>
+        </source>
+        <referredProperty xsi:type="ecore:EAttribute" href="http://www.example.org/diagramaClasesCompleto#//Clasificador/nombre"/>
+      </body>
+      <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&quot;),&#xA;&#x9;inverseJoinColumns=@JoinColumn(name=&quot;"/>
+      <body xsi:type="ocl.ecore:PropertyCallExp">
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <source xsi:type="ocl.ecore:PropertyCallExp">
+          <eType xsi:type="ecore:EClass" href="http://www.example.org/diagramaClasesCompleto#//Clasificador"/>
+          <source xsi:type="ocl.ecore:VariableExp" name="i" referredVariable="/0/generateBidirectionalOrigenManyToMany/i">
+            <eType xsi:type="ecore:EClass" href="http://www.example.org/diagramaClasesCompleto#//Relacion"/>
+          </source>
+          <referredProperty xsi:type="ecore:EReference" href="http://www.example.org/diagramaClasesCompleto#//Relacion/destino"/>
+        </source>
+        <referredProperty xsi:type="ecore:EAttribute" href="http://www.example.org/diagramaClasesCompleto#//Clasificador/nombre"/>
+      </body>
+      <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&quot;))&#xA;&#x9;@Default&#xA;&#x9;@ToString.Exclude"/>
+      <parameter name="i">
+        <eType xsi:type="ecore:EClass" href="http://www.example.org/diagramaClasesCompleto#//Relacion"/>
+      </parameter>
+    </ownedModuleElement>
+    <ownedModuleElement xsi:type="mtl:Template" name="generateBidirectionalOrigenOneToMany" visibility="Public">
+      <body xsi:type="mtl:IfBlock">
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#x9;&#x9;@OneToMany(mappedBy= &quot;"/>
+        <body xsi:type="ocl.ecore:PropertyCallExp">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          <source xsi:type="ocl.ecore:VariableExp" name="i" referredVariable="/0/generateBidirectionalOrigenOneToMany/i">
+            <eType xsi:type="ecore:EClass" href="http://www.example.org/diagramaClasesCompleto#//Relacion"/>
+          </source>
+          <referredProperty xsi:type="ecore:EAttribute" href="http://www.example.org/diagramaClasesCompleto#//Relacion/nombre"/>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&quot;, cascade=CascadeType.ALL, orphanRemoval = True)&#xA;"/>
+        <ifExpr xsi:type="ocl.ecore:PropertyCallExp">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Boolean"/>
+          <source xsi:type="ocl.ecore:VariableExp" name="i" referredVariable="/0/generateBidirectionalOrigenOneToMany/i">
+            <eType xsi:type="ecore:EClass" href="http://www.example.org/diagramaClasesCompleto#//Relacion"/>
+          </source>
+          <referredProperty xsi:type="ecore:EAttribute" href="http://www.example.org/diagramaClasesCompleto#//Relacion/dependiente"/>
+        </ifExpr>
+        <else>
+          <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#x9;&#x9;@OneToMany(mappedBy= &quot;"/>
+          <body xsi:type="ocl.ecore:PropertyCallExp">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+            <source xsi:type="ocl.ecore:VariableExp" name="i" referredVariable="/0/generateBidirectionalOrigenOneToMany/i">
+              <eType xsi:type="ecore:EClass" href="http://www.example.org/diagramaClasesCompleto#//Relacion"/>
+            </source>
+            <referredProperty xsi:type="ecore:EAttribute" href="http://www.example.org/diagramaClasesCompleto#//Relacion/nombre"/>
+          </body>
+          <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&quot;, cascade=CascadeType.MERGE, orphanRemoval = True)&#xA;"/>
+        </else>
+      </body>
+      <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#x9;@Default"/>
+      <parameter name="i">
+        <eType xsi:type="ecore:EClass" href="http://www.example.org/diagramaClasesCompleto#//Relacion"/>
+      </parameter>
+    </ownedModuleElement>
+    <ownedModuleElement xsi:type="mtl:Template" name="generateBidirectionalDestinoOneToMany" visibility="Public">
+      <body xsi:type="mtl:IfBlock">
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#x9;&#x9;@ManyToOne(cascade= CascadeType.PERSIST)&#xA;"/>
+        <ifExpr xsi:type="ocl.ecore:PropertyCallExp">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Boolean"/>
+          <source xsi:type="ocl.ecore:VariableExp" name="i" referredVariable="/0/generateBidirectionalDestinoOneToMany/i">
+            <eType xsi:type="ecore:EClass" href="http://www.example.org/diagramaClasesCompleto#//Relacion"/>
+          </source>
+          <referredProperty xsi:type="ecore:EAttribute" href="http://www.example.org/diagramaClasesCompleto#//Relacion/dependiente"/>
+        </ifExpr>
+        <else>
+          <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#x9;&#x9;@ManyToOne(cascade= CascadeType.MERGE)&#xA;"/>
+        </else>
+      </body>
+      <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#x9;@JoinColumn(name=&quot;fk_"/>
+      <body xsi:type="ocl.ecore:PropertyCallExp">
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <source xsi:type="ocl.ecore:PropertyCallExp">
+          <eType xsi:type="ecore:EClass" href="http://www.example.org/diagramaClasesCompleto#//Clase"/>
+          <source xsi:type="ocl.ecore:VariableExp" name="i" referredVariable="/0/generateBidirectionalDestinoOneToMany/i">
+            <eType xsi:type="ecore:EClass" href="http://www.example.org/diagramaClasesCompleto#//Relacion"/>
+          </source>
+          <referredProperty xsi:type="ecore:EReference" href="http://www.example.org/diagramaClasesCompleto#//Relacion/origen"/>
+        </source>
+        <referredProperty xsi:type="ecore:EAttribute" href="http://www.example.org/diagramaClasesCompleto#//Clasificador/nombre"/>
+      </body>
+      <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&quot;)"/>
+      <parameter name="i">
+        <eType xsi:type="ecore:EClass" href="http://www.example.org/diagramaClasesCompleto#//Relacion"/>
+      </parameter>
+    </ownedModuleElement>
+    <ownedModuleElement xsi:type="mtl:Template" name="generateBidirectionalDestinoOneToOne" visibility="Public">
+      <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#x9;@OneToOne(mappedBy = &quot;"/>
+      <body xsi:type="ocl.ecore:PropertyCallExp">
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <source xsi:type="ocl.ecore:VariableExp" name="i" referredVariable="/0/generateBidirectionalDestinoOneToOne/i">
+          <eType xsi:type="ecore:EClass" href="http://www.example.org/diagramaClasesCompleto#//Relacion"/>
+        </source>
+        <referredProperty xsi:type="ecore:EAttribute" href="http://www.example.org/diagramaClasesCompleto#//Relacion/nombre"/>
+      </body>
+      <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&quot;)"/>
+      <parameter name="i">
+        <eType xsi:type="ecore:EClass" href="http://www.example.org/diagramaClasesCompleto#//Relacion"/>
+      </parameter>
+    </ownedModuleElement>
+  </mtl:Module>
+  <ecore:EPackage name="additions">
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_String_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_Integer_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Integer"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_Real_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Real"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="ecore_EObject_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+      </eAnnotations>
+      <eOperations name="generateRelationOneToOne">
+        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+          <contents xsi:type="ocl.ecore:Constraint"/>
+        </eAnnotations>
+        <eAnnotations source="MTL" references="/0/generateRelationOneToOne"/>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <eParameters name="i">
+          <eType xsi:type="ecore:EClass" href="http://www.example.org/diagramaClasesCompleto#//Relacion"/>
+        </eParameters>
+      </eOperations>
+      <eOperations name="generateRelationOneToMany">
+        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+          <contents xsi:type="ocl.ecore:Constraint"/>
+        </eAnnotations>
+        <eAnnotations source="MTL" references="/0/generateRelationOneToMany"/>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <eParameters name="i">
+          <eType xsi:type="ecore:EClass" href="http://www.example.org/diagramaClasesCompleto#//Relacion"/>
+        </eParameters>
+      </eOperations>
+      <eOperations name="generateRelationManyToOne">
+        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+          <contents xsi:type="ocl.ecore:Constraint"/>
+        </eAnnotations>
+        <eAnnotations source="MTL" references="/0/generateRelationManyToOne"/>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <eParameters name="i">
+          <eType xsi:type="ecore:EClass" href="http://www.example.org/diagramaClasesCompleto#//Relacion"/>
+        </eParameters>
+      </eOperations>
+      <eOperations name="generateRelationManyToMany">
+        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+          <contents xsi:type="ocl.ecore:Constraint"/>
+        </eAnnotations>
+        <eAnnotations source="MTL" references="/0/generateRelationManyToMany"/>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <eParameters name="i">
+          <eType xsi:type="ecore:EClass" href="http://www.example.org/diagramaClasesCompleto#//Relacion"/>
+        </eParameters>
+      </eOperations>
+      <eOperations name="generateBidirectionalDestinoManyToMany">
+        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+          <contents xsi:type="ocl.ecore:Constraint"/>
+        </eAnnotations>
+        <eAnnotations source="MTL" references="/0/generateBidirectionalDestinoManyToMany"/>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <eParameters name="i">
+          <eType xsi:type="ecore:EClass" href="http://www.example.org/diagramaClasesCompleto#//Relacion"/>
+        </eParameters>
+      </eOperations>
+      <eOperations name="generateBidirectionalOrigenManyToMany">
+        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+          <contents xsi:type="ocl.ecore:Constraint"/>
+        </eAnnotations>
+        <eAnnotations source="MTL" references="/0/generateBidirectionalOrigenManyToMany"/>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <eParameters name="i">
+          <eType xsi:type="ecore:EClass" href="http://www.example.org/diagramaClasesCompleto#//Relacion"/>
+        </eParameters>
+      </eOperations>
+      <eOperations name="generateBidirectionalOrigenOneToMany">
+        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+          <contents xsi:type="ocl.ecore:Constraint"/>
+        </eAnnotations>
+        <eAnnotations source="MTL" references="/0/generateBidirectionalOrigenOneToMany"/>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <eParameters name="i">
+          <eType xsi:type="ecore:EClass" href="http://www.example.org/diagramaClasesCompleto#//Relacion"/>
+        </eParameters>
+      </eOperations>
+      <eOperations name="generateBidirectionalDestinoOneToMany">
+        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+          <contents xsi:type="ocl.ecore:Constraint"/>
+        </eAnnotations>
+        <eAnnotations source="MTL" references="/0/generateBidirectionalDestinoOneToMany"/>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <eParameters name="i">
+          <eType xsi:type="ecore:EClass" href="http://www.example.org/diagramaClasesCompleto#//Relacion"/>
+        </eParameters>
+      </eOperations>
+      <eOperations name="generateBidirectionalDestinoOneToOne">
+        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+          <contents xsi:type="ocl.ecore:Constraint"/>
+        </eAnnotations>
+        <eAnnotations source="MTL" references="/0/generateBidirectionalDestinoOneToOne"/>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <eParameters name="i">
+          <eType xsi:type="ecore:EClass" href="http://www.example.org/diagramaClasesCompleto#//Relacion"/>
+        </eParameters>
+      </eOperations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_OclAny_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/OclAny"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_Collection(T)_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Collection(T)"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_Sequence(T)_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Sequence(T)"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_OrderedSet(T)_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/OrderedSet(T)"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="diagramaClasesCompleto_Relacion_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.example.org/diagramaClasesCompleto#//Relacion"/>
+      </eAnnotations>
+    </eClassifiers>
+  </ecore:EPackage>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/diagramaClasesCompleto#//Relacion"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/diagramaClasesCompleto#//Relacion"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/diagramaClasesCompleto#//Relacion"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/diagramaClasesCompleto#//Relacion"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/diagramaClasesCompleto#//Relacion"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/diagramaClasesCompleto#//Relacion"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/diagramaClasesCompleto#//Relacion"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/diagramaClasesCompleto#//Relacion"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/diagramaClasesCompleto#//Relacion"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/diagramaClasesCompleto#//Relacion"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/diagramaClasesCompleto#//Relacion"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/diagramaClasesCompleto#//Relacion"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/diagramaClasesCompleto#//Relacion"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/diagramaClasesCompleto#//Relacion"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/diagramaClasesCompleto#//Relacion"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/diagramaClasesCompleto#//Relacion"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/diagramaClasesCompleto#//Relacion"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/diagramaClasesCompleto#//Relacion"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/diagramaClasesCompleto#//Relacion"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/diagramaClasesCompleto#//Relacion"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/diagramaClasesCompleto#//Relacion"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/diagramaClasesCompleto#//Relacion"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/diagramaClasesCompleto#//Relacion"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/diagramaClasesCompleto#//Relacion"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/diagramaClasesCompleto#//Relacion"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/diagramaClasesCompleto#//Relacion"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/diagramaClasesCompleto#//Relacion"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/diagramaClasesCompleto#//Relacion"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/diagramaClasesCompleto#//Relacion"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/diagramaClasesCompleto#//Relacion"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/diagramaClasesCompleto#//Relacion"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/diagramaClasesCompleto#//Relacion"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/diagramaClasesCompleto#//Relacion"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/diagramaClasesCompleto#//Relacion"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/diagramaClasesCompleto#//Relacion"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/diagramaClasesCompleto#//Relacion"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/diagramaClasesCompleto#//Relacion"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/diagramaClasesCompleto#//Relacion"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/diagramaClasesCompleto#//Relacion"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.example.org/diagramaClasesCompleto#//Relacion"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+  </ocl.ecore:Variable>
+  <ecore:EAnnotation source="positions">
+    <eAnnotations source="positions.0" references="/0/generateRelationOneToOne">
+      <details key="start" value="114"/>
+      <details key="end" value="340"/>
+      <details key="line" value="4"/>
+    </eAnnotations>
+    <eAnnotations source="positions.1" references="/0/generateRelationOneToOne/%">
+      <details key="start" value="171"/>
+      <details key="end" value="284"/>
+      <details key="line" value="5"/>
+    </eAnnotations>
+    <eAnnotations source="positions.2" references="/0/generateRelationOneToOne/%/%">
+      <details key="start" value="192"/>
+      <details key="end" value="233"/>
+      <details key="line" value="6"/>
+    </eAnnotations>
+    <eAnnotations source="positions.3" references="/0/generateRelationOneToOne/%/%.1">
+      <details key="start" value="175"/>
+      <details key="end" value="190"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.4" references="/0/generateRelationOneToOne/%/%.1/i">
+      <details key="start" value="176"/>
+      <details key="end" value="177"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.5" references="/0/generateRelationOneToOne/%/%.2">
+      <details key="start" value="233"/>
+      <details key="end" value="279"/>
+      <details key="line" value="7"/>
+    </eAnnotations>
+    <eAnnotations source="positions.6" references="/0/generateRelationOneToOne/%/%.2/%">
+      <details key="start" value="240"/>
+      <details key="end" value="279"/>
+      <details key="line" value="8"/>
+    </eAnnotations>
+    <eAnnotations source="positions.7" references="/0/generateRelationOneToOne/%.1">
+      <details key="start" value="285"/>
+      <details key="end" value="307"/>
+      <details key="line" value="10"/>
+    </eAnnotations>
+    <eAnnotations source="positions.8" references="/0/generateRelationOneToOne/%.2">
+      <details key="start" value="308"/>
+      <details key="end" value="324"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.9" references="/0/generateRelationOneToOne/%.2/%">
+      <details key="start" value="308"/>
+      <details key="end" value="317"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.10" references="/0/generateRelationOneToOne/%.2/%/i">
+      <details key="start" value="308"/>
+      <details key="end" value="309"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.11" references="/0/generateRelationOneToOne/%.3">
+      <details key="start" value="326"/>
+      <details key="end" value="328"/>
+      <details key="line" value="10"/>
+    </eAnnotations>
+    <eAnnotations source="positions.12" references="/0/generateRelationOneToOne/i">
+      <details key="start" value="156"/>
+      <details key="end" value="168"/>
+      <details key="line" value="4"/>
+    </eAnnotations>
+    <eAnnotations source="positions.13" references="/0/generateRelationOneToMany">
+      <details key="start" value="341"/>
+      <details key="end" value="562"/>
+      <details key="line" value="12"/>
+    </eAnnotations>
+    <eAnnotations source="positions.14" references="/0/generateRelationOneToMany/%">
+      <details key="start" value="399"/>
+      <details key="end" value="548"/>
+      <details key="line" value="13"/>
+    </eAnnotations>
+    <eAnnotations source="positions.15" references="/0/generateRelationOneToMany/%/%">
+      <details key="start" value="420"/>
+      <details key="end" value="477"/>
+      <details key="line" value="14"/>
+    </eAnnotations>
+    <eAnnotations source="positions.16" references="/0/generateRelationOneToMany/%/%.1">
+      <details key="start" value="403"/>
+      <details key="end" value="418"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.17" references="/0/generateRelationOneToMany/%/%.1/i">
+      <details key="start" value="404"/>
+      <details key="end" value="405"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.18" references="/0/generateRelationOneToMany/%/%.2">
+      <details key="start" value="477"/>
+      <details key="end" value="543"/>
+      <details key="line" value="15"/>
+    </eAnnotations>
+    <eAnnotations source="positions.19" references="/0/generateRelationOneToMany/%/%.2/%">
+      <details key="start" value="484"/>
+      <details key="end" value="543"/>
+      <details key="line" value="16"/>
+    </eAnnotations>
+    <eAnnotations source="positions.20" references="/0/generateRelationOneToMany/%.1">
+      <details key="start" value="549"/>
+      <details key="end" value="550"/>
+      <details key="line" value="18"/>
+    </eAnnotations>
+    <eAnnotations source="positions.21" references="/0/generateRelationOneToMany/i">
+      <details key="start" value="384"/>
+      <details key="end" value="396"/>
+      <details key="line" value="12"/>
+    </eAnnotations>
+    <eAnnotations source="positions.22" references="/0/generateRelationManyToOne">
+      <details key="start" value="563"/>
+      <details key="end" value="794"/>
+      <details key="line" value="20"/>
+    </eAnnotations>
+    <eAnnotations source="positions.23" references="/0/generateRelationManyToOne/%">
+      <details key="start" value="621"/>
+      <details key="end" value="736"/>
+      <details key="line" value="21"/>
+    </eAnnotations>
+    <eAnnotations source="positions.24" references="/0/generateRelationManyToOne/%/%">
+      <details key="start" value="642"/>
+      <details key="end" value="684"/>
+      <details key="line" value="22"/>
+    </eAnnotations>
+    <eAnnotations source="positions.25" references="/0/generateRelationManyToOne/%/%.1">
+      <details key="start" value="625"/>
+      <details key="end" value="640"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.26" references="/0/generateRelationManyToOne/%/%.1/i">
+      <details key="start" value="626"/>
+      <details key="end" value="627"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.27" references="/0/generateRelationManyToOne/%/%.2">
+      <details key="start" value="684"/>
+      <details key="end" value="731"/>
+      <details key="line" value="23"/>
+    </eAnnotations>
+    <eAnnotations source="positions.28" references="/0/generateRelationManyToOne/%/%.2/%">
+      <details key="start" value="691"/>
+      <details key="end" value="731"/>
+      <details key="line" value="24"/>
+    </eAnnotations>
+    <eAnnotations source="positions.29" references="/0/generateRelationManyToOne/%.1">
+      <details key="start" value="737"/>
+      <details key="end" value="761"/>
+      <details key="line" value="26"/>
+    </eAnnotations>
+    <eAnnotations source="positions.30" references="/0/generateRelationManyToOne/%.2">
+      <details key="start" value="762"/>
+      <details key="end" value="778"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.31" references="/0/generateRelationManyToOne/%.2/%">
+      <details key="start" value="762"/>
+      <details key="end" value="771"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.32" references="/0/generateRelationManyToOne/%.2/%/i">
+      <details key="start" value="762"/>
+      <details key="end" value="763"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.33" references="/0/generateRelationManyToOne/%.3">
+      <details key="start" value="780"/>
+      <details key="end" value="782"/>
+      <details key="line" value="27"/>
+    </eAnnotations>
+    <eAnnotations source="positions.34" references="/0/generateRelationManyToOne/i">
+      <details key="start" value="606"/>
+      <details key="end" value="618"/>
+      <details key="line" value="20"/>
+    </eAnnotations>
+    <eAnnotations source="positions.35" references="/0/generateRelationManyToMany">
+      <details key="start" value="795"/>
+      <details key="end" value="1165"/>
+      <details key="line" value="29"/>
+    </eAnnotations>
+    <eAnnotations source="positions.36" references="/0/generateRelationManyToMany/%">
+      <details key="start" value="855"/>
+      <details key="end" value="968"/>
+      <details key="line" value="30"/>
+    </eAnnotations>
+    <eAnnotations source="positions.37" references="/0/generateRelationManyToMany/%/%">
+      <details key="start" value="876"/>
+      <details key="end" value="915"/>
+      <details key="line" value="31"/>
+    </eAnnotations>
+    <eAnnotations source="positions.38" references="/0/generateRelationManyToMany/%/%.1">
+      <details key="start" value="859"/>
+      <details key="end" value="874"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.39" references="/0/generateRelationManyToMany/%/%.1/i">
+      <details key="start" value="860"/>
+      <details key="end" value="861"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.40" references="/0/generateRelationManyToMany/%/%.2">
+      <details key="start" value="915"/>
+      <details key="end" value="963"/>
+      <details key="line" value="32"/>
+    </eAnnotations>
+    <eAnnotations source="positions.41" references="/0/generateRelationManyToMany/%/%.2/%">
+      <details key="start" value="922"/>
+      <details key="end" value="963"/>
+      <details key="line" value="33"/>
+    </eAnnotations>
+    <eAnnotations source="positions.42" references="/0/generateRelationManyToMany/%.1">
+      <details key="start" value="969"/>
+      <details key="end" value="989"/>
+      <details key="line" value="35"/>
+    </eAnnotations>
+    <eAnnotations source="positions.43" references="/0/generateRelationManyToMany/%.2">
+      <details key="start" value="990"/>
+      <details key="end" value="1005"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.44" references="/0/generateRelationManyToMany/%.2/%">
+      <details key="start" value="990"/>
+      <details key="end" value="998"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.45" references="/0/generateRelationManyToMany/%.2/%/i">
+      <details key="start" value="990"/>
+      <details key="end" value="991"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.46" references="/0/generateRelationManyToMany/%.3">
+      <details key="start" value="1007"/>
+      <details key="end" value="1008"/>
+      <details key="line" value="36"/>
+    </eAnnotations>
+    <eAnnotations source="positions.47" references="/0/generateRelationManyToMany/%.4">
+      <details key="start" value="1009"/>
+      <details key="end" value="1025"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.48" references="/0/generateRelationManyToMany/%.4/%">
+      <details key="start" value="1009"/>
+      <details key="end" value="1018"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.49" references="/0/generateRelationManyToMany/%.4/%/i">
+      <details key="start" value="1009"/>
+      <details key="end" value="1010"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.50" references="/0/generateRelationManyToMany/%.5">
+      <details key="start" value="1027"/>
+      <details key="end" value="1061"/>
+      <details key="line" value="36"/>
+    </eAnnotations>
+    <eAnnotations source="positions.51" references="/0/generateRelationManyToMany/%.6">
+      <details key="start" value="1062"/>
+      <details key="end" value="1077"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.52" references="/0/generateRelationManyToMany/%.6/%">
+      <details key="start" value="1062"/>
+      <details key="end" value="1070"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.53" references="/0/generateRelationManyToMany/%.6/%/i">
+      <details key="start" value="1062"/>
+      <details key="end" value="1063"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.54" references="/0/generateRelationManyToMany/%.7">
+      <details key="start" value="1079"/>
+      <details key="end" value="1121"/>
+      <details key="line" value="37"/>
+    </eAnnotations>
+    <eAnnotations source="positions.55" references="/0/generateRelationManyToMany/%.8">
+      <details key="start" value="1122"/>
+      <details key="end" value="1138"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.56" references="/0/generateRelationManyToMany/%.8/%">
+      <details key="start" value="1122"/>
+      <details key="end" value="1131"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.57" references="/0/generateRelationManyToMany/%.8/%/i">
+      <details key="start" value="1122"/>
+      <details key="end" value="1123"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.58" references="/0/generateRelationManyToMany/%.9">
+      <details key="start" value="1140"/>
+      <details key="end" value="1153"/>
+      <details key="line" value="38"/>
+    </eAnnotations>
+    <eAnnotations source="positions.59" references="/0/generateRelationManyToMany/i">
+      <details key="start" value="839"/>
+      <details key="end" value="851"/>
+      <details key="line" value="29"/>
+    </eAnnotations>
+    <eAnnotations source="positions.60" references="/0/generateBidirectionalDestinoManyToMany">
+      <details key="start" value="1168"/>
+      <details key="end" value="1298"/>
+      <details key="line" value="43"/>
+    </eAnnotations>
+    <eAnnotations source="positions.61" references="/0/generateBidirectionalDestinoManyToMany/%">
+      <details key="start" value="1239"/>
+      <details key="end" value="1263"/>
+      <details key="line" value="44"/>
+    </eAnnotations>
+    <eAnnotations source="positions.62" references="/0/generateBidirectionalDestinoManyToMany/%.1">
+      <details key="start" value="1264"/>
+      <details key="end" value="1272"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.63" references="/0/generateBidirectionalDestinoManyToMany/%.1/i">
+      <details key="start" value="1264"/>
+      <details key="end" value="1265"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.64" references="/0/generateBidirectionalDestinoManyToMany/%.2">
+      <details key="start" value="1274"/>
+      <details key="end" value="1286"/>
+      <details key="line" value="44"/>
+    </eAnnotations>
+    <eAnnotations source="positions.65" references="/0/generateBidirectionalDestinoManyToMany/i">
+      <details key="start" value="1224"/>
+      <details key="end" value="1236"/>
+      <details key="line" value="43"/>
+    </eAnnotations>
+    <eAnnotations source="positions.66" references="/0/generateBidirectionalOrigenManyToMany">
+      <details key="start" value="1299"/>
+      <details key="end" value="1726"/>
+      <details key="line" value="47"/>
+    </eAnnotations>
+    <eAnnotations source="positions.67" references="/0/generateBidirectionalOrigenManyToMany/%">
+      <details key="start" value="1370"/>
+      <details key="end" value="1512"/>
+      <details key="line" value="48"/>
+    </eAnnotations>
+    <eAnnotations source="positions.68" references="/0/generateBidirectionalOrigenManyToMany/%/%">
+      <details key="start" value="1391"/>
+      <details key="end" value="1456"/>
+      <details key="line" value="49"/>
+    </eAnnotations>
+    <eAnnotations source="positions.69" references="/0/generateBidirectionalOrigenManyToMany/%/%.1">
+      <details key="start" value="1374"/>
+      <details key="end" value="1389"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.70" references="/0/generateBidirectionalOrigenManyToMany/%/%.1/i">
+      <details key="start" value="1375"/>
+      <details key="end" value="1376"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.71" references="/0/generateBidirectionalOrigenManyToMany/%/%.2">
+      <details key="start" value="1457"/>
+      <details key="end" value="1507"/>
+      <details key="line" value="50"/>
+    </eAnnotations>
+    <eAnnotations source="positions.72" references="/0/generateBidirectionalOrigenManyToMany/%/%.2/%">
+      <details key="start" value="1464"/>
+      <details key="end" value="1506"/>
+      <details key="line" value="51"/>
+    </eAnnotations>
+    <eAnnotations source="positions.73" references="/0/generateBidirectionalOrigenManyToMany/%.1">
+      <details key="start" value="1513"/>
+      <details key="end" value="1531"/>
+      <details key="line" value="53"/>
+    </eAnnotations>
+    <eAnnotations source="positions.74" references="/0/generateBidirectionalOrigenManyToMany/%.2">
+      <details key="start" value="1532"/>
+      <details key="end" value="1547"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.75" references="/0/generateBidirectionalOrigenManyToMany/%.2/%">
+      <details key="start" value="1532"/>
+      <details key="end" value="1540"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.76" references="/0/generateBidirectionalOrigenManyToMany/%.2/%/i">
+      <details key="start" value="1532"/>
+      <details key="end" value="1533"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.77" references="/0/generateBidirectionalOrigenManyToMany/%.3">
+      <details key="start" value="1549"/>
+      <details key="end" value="1550"/>
+      <details key="line" value="53"/>
+    </eAnnotations>
+    <eAnnotations source="positions.78" references="/0/generateBidirectionalOrigenManyToMany/%.4">
+      <details key="start" value="1551"/>
+      <details key="end" value="1567"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.79" references="/0/generateBidirectionalOrigenManyToMany/%.4/%">
+      <details key="start" value="1551"/>
+      <details key="end" value="1560"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.80" references="/0/generateBidirectionalOrigenManyToMany/%.4/%/i">
+      <details key="start" value="1551"/>
+      <details key="end" value="1552"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.81" references="/0/generateBidirectionalOrigenManyToMany/%.5">
+      <details key="start" value="1569"/>
+      <details key="end" value="1603"/>
+      <details key="line" value="53"/>
+    </eAnnotations>
+    <eAnnotations source="positions.82" references="/0/generateBidirectionalOrigenManyToMany/%.6">
+      <details key="start" value="1604"/>
+      <details key="end" value="1619"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.83" references="/0/generateBidirectionalOrigenManyToMany/%.6/%">
+      <details key="start" value="1604"/>
+      <details key="end" value="1612"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.84" references="/0/generateBidirectionalOrigenManyToMany/%.6/%/i">
+      <details key="start" value="1604"/>
+      <details key="end" value="1605"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.85" references="/0/generateBidirectionalOrigenManyToMany/%.7">
+      <details key="start" value="1621"/>
+      <details key="end" value="1663"/>
+      <details key="line" value="54"/>
+    </eAnnotations>
+    <eAnnotations source="positions.86" references="/0/generateBidirectionalOrigenManyToMany/%.8">
+      <details key="start" value="1664"/>
+      <details key="end" value="1680"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.87" references="/0/generateBidirectionalOrigenManyToMany/%.8/%">
+      <details key="start" value="1664"/>
+      <details key="end" value="1673"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.88" references="/0/generateBidirectionalOrigenManyToMany/%.8/%/i">
+      <details key="start" value="1664"/>
+      <details key="end" value="1665"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.89" references="/0/generateBidirectionalOrigenManyToMany/%.9">
+      <details key="start" value="1682"/>
+      <details key="end" value="1714"/>
+      <details key="line" value="55"/>
+    </eAnnotations>
+    <eAnnotations source="positions.90" references="/0/generateBidirectionalOrigenManyToMany/i">
+      <details key="start" value="1354"/>
+      <details key="end" value="1366"/>
+      <details key="line" value="47"/>
+    </eAnnotations>
+    <eAnnotations source="positions.91" references="/0/generateBidirectionalOrigenOneToMany">
+      <details key="start" value="1727"/>
+      <details key="end" value="2026"/>
+      <details key="line" value="59"/>
+    </eAnnotations>
+    <eAnnotations source="positions.92" references="/0/generateBidirectionalOrigenOneToMany/%">
+      <details key="start" value="1797"/>
+      <details key="end" value="2004"/>
+      <details key="line" value="60"/>
+    </eAnnotations>
+    <eAnnotations source="positions.93" references="/0/generateBidirectionalOrigenOneToMany/%/%">
+      <details key="start" value="1818"/>
+      <details key="end" value="1842"/>
+      <details key="line" value="61"/>
+    </eAnnotations>
+    <eAnnotations source="positions.94" references="/0/generateBidirectionalOrigenOneToMany/%/%.1">
+      <details key="start" value="1843"/>
+      <details key="end" value="1851"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.95" references="/0/generateBidirectionalOrigenOneToMany/%/%.1/i">
+      <details key="start" value="1843"/>
+      <details key="end" value="1844"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.96" references="/0/generateBidirectionalOrigenOneToMany/%/%.2">
+      <details key="start" value="1853"/>
+      <details key="end" value="1903"/>
+      <details key="line" value="61"/>
+    </eAnnotations>
+    <eAnnotations source="positions.97" references="/0/generateBidirectionalOrigenOneToMany/%/%.3">
+      <details key="start" value="1801"/>
+      <details key="end" value="1816"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.98" references="/0/generateBidirectionalOrigenOneToMany/%/%.3/i">
+      <details key="start" value="1802"/>
+      <details key="end" value="1803"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.99" references="/0/generateBidirectionalOrigenOneToMany/%/%.4">
+      <details key="start" value="1904"/>
+      <details key="end" value="1999"/>
+      <details key="line" value="62"/>
+    </eAnnotations>
+    <eAnnotations source="positions.100" references="/0/generateBidirectionalOrigenOneToMany/%/%.4/%">
+      <details key="start" value="1911"/>
+      <details key="end" value="1935"/>
+      <details key="line" value="63"/>
+    </eAnnotations>
+    <eAnnotations source="positions.101" references="/0/generateBidirectionalOrigenOneToMany/%/%.4/%.1">
+      <details key="start" value="1936"/>
+      <details key="end" value="1944"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.102" references="/0/generateBidirectionalOrigenOneToMany/%/%.4/%.1/i">
+      <details key="start" value="1936"/>
+      <details key="end" value="1937"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.103" references="/0/generateBidirectionalOrigenOneToMany/%/%.4/%.2">
+      <details key="start" value="1946"/>
+      <details key="end" value="1998"/>
+      <details key="line" value="63"/>
+    </eAnnotations>
+    <eAnnotations source="positions.104" references="/0/generateBidirectionalOrigenOneToMany/%.1">
+      <details key="start" value="2005"/>
+      <details key="end" value="2014"/>
+      <details key="line" value="65"/>
+    </eAnnotations>
+    <eAnnotations source="positions.105" references="/0/generateBidirectionalOrigenOneToMany/i">
+      <details key="start" value="1781"/>
+      <details key="end" value="1793"/>
+      <details key="line" value="59"/>
+    </eAnnotations>
+    <eAnnotations source="positions.106" references="/0/generateBidirectionalDestinoOneToMany">
+      <details key="start" value="2027"/>
+      <details key="end" value="2272"/>
+      <details key="line" value="67"/>
+    </eAnnotations>
+    <eAnnotations source="positions.107" references="/0/generateBidirectionalDestinoOneToMany/%">
+      <details key="start" value="2098"/>
+      <details key="end" value="2217"/>
+      <details key="line" value="68"/>
+    </eAnnotations>
+    <eAnnotations source="positions.108" references="/0/generateBidirectionalDestinoOneToMany/%/%">
+      <details key="start" value="2119"/>
+      <details key="end" value="2162"/>
+      <details key="line" value="69"/>
+    </eAnnotations>
+    <eAnnotations source="positions.109" references="/0/generateBidirectionalDestinoOneToMany/%/%.1">
+      <details key="start" value="2102"/>
+      <details key="end" value="2117"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.110" references="/0/generateBidirectionalDestinoOneToMany/%/%.1/i">
+      <details key="start" value="2103"/>
+      <details key="end" value="2104"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.111" references="/0/generateBidirectionalDestinoOneToMany/%/%.2">
+      <details key="start" value="2163"/>
+      <details key="end" value="2212"/>
+      <details key="line" value="70"/>
+    </eAnnotations>
+    <eAnnotations source="positions.112" references="/0/generateBidirectionalDestinoOneToMany/%/%.2/%">
+      <details key="start" value="2170"/>
+      <details key="end" value="2211"/>
+      <details key="line" value="71"/>
+    </eAnnotations>
+    <eAnnotations source="positions.113" references="/0/generateBidirectionalDestinoOneToMany/%.1">
+      <details key="start" value="2218"/>
+      <details key="end" value="2240"/>
+      <details key="line" value="73"/>
+    </eAnnotations>
+    <eAnnotations source="positions.114" references="/0/generateBidirectionalDestinoOneToMany/%.2">
+      <details key="start" value="2241"/>
+      <details key="end" value="2256"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.115" references="/0/generateBidirectionalDestinoOneToMany/%.2/%">
+      <details key="start" value="2241"/>
+      <details key="end" value="2249"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.116" references="/0/generateBidirectionalDestinoOneToMany/%.2/%/i">
+      <details key="start" value="2241"/>
+      <details key="end" value="2242"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.117" references="/0/generateBidirectionalDestinoOneToMany/%.3">
+      <details key="start" value="2258"/>
+      <details key="end" value="2260"/>
+      <details key="line" value="73"/>
+    </eAnnotations>
+    <eAnnotations source="positions.118" references="/0/generateBidirectionalDestinoOneToMany/i">
+      <details key="start" value="2082"/>
+      <details key="end" value="2094"/>
+      <details key="line" value="67"/>
+    </eAnnotations>
+    <eAnnotations source="positions.119" references="/0/generateBidirectionalDestinoOneToOne">
+      <details key="start" value="2273"/>
+      <details key="end" value="2390"/>
+      <details key="line" value="75"/>
+    </eAnnotations>
+    <eAnnotations source="positions.120" references="/0/generateBidirectionalDestinoOneToOne/%">
+      <details key="start" value="2342"/>
+      <details key="end" value="2365"/>
+      <details key="line" value="76"/>
+    </eAnnotations>
+    <eAnnotations source="positions.121" references="/0/generateBidirectionalDestinoOneToOne/%.1">
+      <details key="start" value="2366"/>
+      <details key="end" value="2374"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.122" references="/0/generateBidirectionalDestinoOneToOne/%.1/i">
+      <details key="start" value="2366"/>
+      <details key="end" value="2367"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.123" references="/0/generateBidirectionalDestinoOneToOne/%.2">
+      <details key="start" value="2376"/>
+      <details key="end" value="2378"/>
+      <details key="line" value="76"/>
+    </eAnnotations>
+    <eAnnotations source="positions.124" references="/0/generateBidirectionalDestinoOneToOne/i">
+      <details key="start" value="2327"/>
+      <details key="end" value="2339"/>
+      <details key="line" value="75"/>
+    </eAnnotations>
+  </ecore:EAnnotation>
+</xmi:XMI>

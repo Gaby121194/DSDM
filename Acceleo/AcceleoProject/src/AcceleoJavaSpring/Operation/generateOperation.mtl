@@ -1,0 +1,36 @@
+[comment encoding = UTF-8 /]
+[module generateOperation('http://www.example.org/diagramaClasesCompleto')]
+
+
+[template public generateOperation(c : Clasificador)]
+[if (c.oclIsTypeOf(Clase))]
+[for (o : Operacion | c.operaciones_contenidas)]
+[o.visibilidad/] [if (o.esStatic)]static[/if] [if (o.esFinal)]final[/if] [o.tipoRetorno/] [o.nombre/] 
+ ([for (n : Operacion | c.operaciones_contenidas.parametros_contenidos)] [n.tipoRetorno/] [n.nombre/] ,
+[/for]
+[for (i : Atributo | c.operaciones_contenidas.parametros_contenidos) ][i.tipo/] [i.nombre/][/for]){
+[if (o.tipoRetorno.toString()='boolean')]
+return false;
+[/if]
+[if ((o.tipoRetorno.toString()='String')
+or (o.tipoRetorno.toString()='Date'))]
+return null;
+[/if]
+[if ((o.tipoRetorno.toString()='int')
+or(o.tipoRetorno.toString()='double')
+or(o.tipoRetorno.toString()='float')
+or(o.tipoRetorno.toString()='byte')
+or(o.tipoRetorno.toString()='char'))]
+return 0;
+[/if]}
+[/for]
+
+[else]
+
+[for (o : Operacion | c.operaciones_contenidas)]
+public static final [o.tipoRetorno/] [o.nombre/]([for (n : Operacion | c.operaciones_contenidas.parametros_contenidos) separator (',') ][n.tipoRetorno/] [n.nombre/][/for][for (i : Atributo | c.operaciones_contenidas.parametros_contenidos) separator (',')][i.tipo/] [i.nombre/][/for]);
+
+[/for]
+
+[/if]
+[/template]

@@ -1,0 +1,36 @@
+[comment encoding = UTF-8 /]
+[module generateControllers('http://www.example.org/diagramaClasesCompleto')]
+
+
+[template public generateControllers(raiz : DiagramaClases)]
+
+
+[for (paquete : Package | raiz.packages_contenidos)]
+	
+
+[for (clase : Clase | paquete.clasificadores_contenidos->filter(Clase))]
+
+[if (clase.tieneABM)]
+
+[file ('src/main/java/'+raiz.artefacto_contenido.grupoId.substituteAll('.', '/')+'/'+raiz.artefacto_contenido.artefactotId+'/controllers/'+clase.nombre+'Controller.java', false, 'UTF-8')]
+package [raiz.artefacto_contenido.grupoId/].[raiz.artefacto_contenido.artefactotId/].controllers;
+
+import [raiz.artefacto_contenido.grupoId/].[raiz.artefacto_contenido.artefactotId/].entities.[paquete.nombre/].[clase.nombre/];
+import [raiz.artefacto_contenido.grupoId/].[raiz.artefacto_contenido.artefactotId/].services.[clase.nombre/]ServiceImpl;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+@RestController
+@CrossOrigin(origins = "*")
+@RequestMapping(path = "api/v1/[clase.nombre.toLowerFirst()/][if (clase.nombre.toString().endsWith('a') or clase.nombre.toString().endsWith('e') 
+or clase.nombre.toString().endsWith('i') or clase.nombre.toString().endsWith('o') or clase.nombre.toString().endsWith('u') )]s[else]es[/if]")
+public class [clase.nombre/]Controller extends BaseControllerImpl<[clase.nombre/], [clase.nombre/]ServiceImpl>{
+
+}
+
+[/file]
+[/if]
+[/for]
+[/for]
+[/template]

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<diagramaClasesCompleto:DiagramaClases xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:diagramaClasesCompleto="http://www.example.org/diagramaClasesCompleto">
+  <packages_contenidos nombre="Paquete1">
+    <clasificadores_contenidos xsi:type="diagramaClasesCompleto:Clase" nombre="Clase1">
+      <operaciones_contenidas nombre="operacion1" visibilidad="public">
+        <parametros_contenidos xsi:type="diagramaClasesCompleto:Atributo"/>
+        <parametros_contenidos xsi:type="diagramaClasesCompleto:Operacion"/>
+      </operaciones_contenidas>
+    </clasificadores_contenidos>
+    <clasificadores_contenidos xsi:type="diagramaClasesCompleto:Clase" nombre="Clase2"/>
+  </packages_contenidos>
+</diagramaClasesCompleto:DiagramaClases>

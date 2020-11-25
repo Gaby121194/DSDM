@@ -1,0 +1,20 @@
+[comment encoding = UTF-8 /]
+[module generateInterface('http://www.example.org/diagramaClasesCompleto')]
+[import AcceleoJavaSpring::Relation::generateInterfaceExtension/]
+[import AcceleoJavaSpring::Property::generateInterfaceProperty /]
+[import AcceleoJavaSpring::Operation::generateOperation /]
+
+[template public generateInterface(d : DiagramaClases)]
+[for (p : Package | d.packages_contenidos)]
+	[for (i : Interface | p.clasificadores_contenidos->filter(Interface))]
+		[file ('src/main/java/'+d.artefacto_contenido.grupoId.substituteAll('.', '/')+'/'+d.artefacto_contenido.artefactotId+'/entities/'+p.nombre+'/'+ i.nombre +'.java', false, 'UTF-8')]
+		package [d.artefacto_contenido.grupoId/].[d.artefacto_contenido.artefactotId/].entities.[p.nombre/];
+		public interface [i.nombre/] [generateInterfaceExtension(i)/]{
+		[generateInterfaceProperty(i)/]
+		[generateOperation(i)/]
+		}
+		[/file]
+	[/for]
+[/for]
+
+[/template]

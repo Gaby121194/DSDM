@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="NewWizardAction">
+		<item key="NewWizardSelectionPage.STORE_SELECTED_ID" value="org.eclipse.sirius.ui.modelingproject.wizard"/>
+		<list key="NewWizardSelectionPage.STORE_EXPANDED_CATEGORIES_ID">
+			<item value="org.eclipse.emf.codegen.ecore.ui.wizardCategory"/>
+			<item value="org.eclipse.sirius.category"/>
+			<item value="org.eclipse.ui.Examples"/>
+			<item value="org.eclipse.ui.Examples/org.eclipse.gmf.examples.runtime"/>
+		</list>
+	</section>
+	<section name="SmartImportWizard">
+		<item key="SmartImportRootWizardPage.STORE_HIDE_ALREADY_OPEN" value="false"/>
+		<item key="SmartImportRootWizardPage.STORE_CLOSE_IMPORTED" value="false"/>
+		<item key="SmartImportRootWizardPage.STORE_NESTED_PROJECTS" value="true"/>
+		<item key="SmartImportRootWizardPage.STORE_CONFIGURE_NATURES" value="true"/>
+		<list key="org.eclipse.ui.internal.wizards.datatransfer.SmartImportRootWizardPage.knownSources">
+			<item value="C:\Users\Rodrigo\Desktop\Facultad\DSDM\siriuDC\PruebaDiagramaCompleto"/>
+			<item value="C:\Users\Rodrigo\Desktop\Facultad\DSDM\siriuDC\DiagramaCompleto.design"/>
+			<item value="C:\Users\Rodrigo\Desktop\Nueva carpeta\PruebaDiagramaCompleto"/>
+			<item value="C:\Users\Rodrigo\Desktop\Nueva carpeta\DiagramaCompleto.design"/>
+		</list>
+	</section>
+</section>

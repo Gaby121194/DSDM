@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:diagramaClasesCompleto="http://www.example.org/diagramaClasesCompleto" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.3/notation" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description">
+  <viewpoint:DAnalysis uid="_j-7MMAKQEeu5w-Dds4RBEw" selectedViews="_H4FA0AKREeu5w-Dds4RBEw" version="14.3.1.202003261200">
+    <semanticResources>PruebaXMI.diagramaclasescompleto</semanticResources>
+    <ownedViews xmi:type="viewpoint:DView" uid="_H4FA0AKREeu5w-Dds4RBEw">
+      <viewpoint xmi:type="description:Viewpoint" href="platform:/resource/DiagramaCompleto.design/description/DiagramaCompleto.odesign#//@ownedViewpoints[name='DiagramaUTN']"/>
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_IWyWEQKREeu5w-Dds4RBEw" name="new DiagramaDeClases" repPath="#_IWL5IAKREeu5w-Dds4RBEw" changeId="aec9e6ca-5972-4961-9ac5-ff1d3fcdae13">
+        <description xmi:type="description_1:DiagramDescription" href="platform:/resource/DiagramaCompleto.design/description/DiagramaCompleto.odesign#//@ownedViewpoints[name='DiagramaUTN']/@ownedRepresentations[name='DiagramaDeClases']"/>
+        <target xmi:type="diagramaClasesCompleto:DiagramaClases" href="PruebaXMI.diagramaclasescompleto#/"/>
+      </ownedRepresentationDescriptors>
+    </ownedViews>
+  </viewpoint:DAnalysis>
+  <diagram:DSemanticDiagram uid="_IWL5IAKREeu5w-Dds4RBEw">
+    <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_IWolEAKREeu5w-Dds4RBEw" source="DANNOTATION_CUSTOMIZATION_KEY">
+      <data xmi:type="diagram:ComputedStyleDescriptionRegistry" uid="_IWolEQKREeu5w-Dds4RBEw"/>
+    </ownedAnnotationEntries>
+    <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_IXPCAAKREeu5w-Dds4RBEw" source="GMF_DIAGRAMS">
+      <data xmi:type="notation:Diagram" xmi:id="_IXPCAQKREeu5w-Dds4RBEw" type="Sirius" element="_IWL5IAKREeu5w-Dds4RBEw" measurementUnit="Pixel">
+        <styles xmi:type="notation:DiagramStyle" xmi:id="_IXPCAgKREeu5w-Dds4RBEw"/>
+      </data>
+    </ownedAnnotationEntries>
+    <description xmi:type="description_1:DiagramDescription" href="platform:/resource/DiagramaCompleto.design/description/DiagramaCompleto.odesign#//@ownedViewpoints[name='DiagramaUTN']/@ownedRepresentations[name='DiagramaDeClases']"/>
+    <filterVariableHistory xmi:type="diagram:FilterVariableHistory" uid="_IWVqIAKREeu5w-Dds4RBEw"/>
+    <activatedLayers xmi:type="description_1:Layer" href="platform:/resource/DiagramaCompleto.design/description/DiagramaCompleto.odesign#//@ownedViewpoints[name='DiagramaUTN']/@ownedRepresentations[name='DiagramaDeClases']/@defaultLayer"/>
+    <target xmi:type="diagramaClasesCompleto:DiagramaClases" href="PruebaXMI.diagramaclasescompleto#/"/>
+  </diagram:DSemanticDiagram>
+</xmi:XMI>
